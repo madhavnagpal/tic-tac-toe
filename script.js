@@ -53,7 +53,7 @@ function checkWin() {
       infoNode.innerText = firstWinningPositionText + " Won";
       container.removeEventListener("click", playGame);
       container.classList.add("pointerEventsNone");
-      winningImage.style.width = "135px";
+      winningImage.style.width = "200px";
       isGameOver = true;
     }
   });
