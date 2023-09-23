@@ -33,6 +33,16 @@
   grid-template-rows: repeat(3, 90px);
   grid-template-columns: repeat(3, 90px);
   font-family: "Ubuntu", sans-serif;
+  position: relative;
+}
+
+.line {
+  background-color: black;
+  width: 270px; /* width of container = 3 * 90 */
+  height: 3px;
+  position: absolute;
+  display: none;
+  background-color: #1f5eff;
 }
 
 .box {

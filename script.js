@@ -9,6 +9,7 @@ const container = document.querySelector(".container");
 const infoNode = document.querySelector(".info");
 const resetButton = document.getElementById("reset");
 const winningImage = document.querySelector(".excitedImg");
+const lineNode = document.querySelector(".line");
 
 // Application states
 let currentTurn = "X";
@@ -26,21 +27,27 @@ function changeTurn(clickedBox) {
 }
 
 const winningPatterns = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
+  [0, 1, 2, 0, 45, 0],
+  [3, 4, 5, 0, 135, 0],
+  [6, 7, 8, 0, 225, 0],
+  [0, 3, 6, -90, 135, -90],
+  [1, 4, 7, 0, 135, -90],
+  [2, 5, 8, 90, 135, -90],
+  [0, 4, 8, 0, 135, 45],
+  [2, 4, 6, 0, 135, -45],
 ];
 
 function checkWin() {
   const boxTexts = document.getElementsByClassName("boxText");
   winningPatterns.forEach((winningPattern) => {
-    const [firstWinningPosition, secondWinningPosition, thirdWinningPosition] =
-      winningPattern;
+    const [
+      firstWinningPosition,
+      secondWinningPosition,
+      thirdWinningPosition,
+      translateX,
+      translateY,
+      rotate,
+    ] = winningPattern;
     const firstWinningPositionText = boxTexts[firstWinningPosition].innerText;
     const secondWinningPositionText = boxTexts[secondWinningPosition].innerText;
     const thenWinningPositionText = boxTexts[thirdWinningPosition].innerText;
@@ -55,6 +62,8 @@ function checkWin() {
       container.classList.add("pointerEventsNone");
       winningImage.style.width = "200px";
       isGameOver = true;
+      lineNode.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotate}deg)`;
+      lineNode.style.display = "block";
     }
   });
 }
@@ -119,5 +128,8 @@ function resetGame() {
     box.classList.remove("pointerEventsNone");
     box.querySelector(".boxText").innerText = "";
   });
+  currentTurn = "X";
   infoNode.innerText = "Turn for X";
+  lineNode.style.transform = "";
+  lineNode.style.display = "none";
 }
