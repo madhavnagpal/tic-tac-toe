@@ -63,7 +63,7 @@ function checkWin() {
       winningImage.style.width = "200px";
       isGameOver = true;
       lineNode.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotate}deg)`;
-      lineNode.style.display = "block";
+      lineNode.style.width = "270px";
     }
   });
 }
@@ -130,6 +130,5 @@ function resetGame() {
   });
   currentTurn = "X";
   infoNode.innerText = "Turn for X";
-  lineNode.style.transform = "";
-  lineNode.style.display = "none";
+  lineNode.style.width = "0";
 }

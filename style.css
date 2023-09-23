@@ -38,10 +38,10 @@
 
 .line {
   background-color: black;
-  width: 270px; /* width of container = 3 * 90 */
   height: 3px;
   position: absolute;
-  display: none;
+  width: 0;
+  transition: width 1s ease-in-out;
   background-color: #1f5eff;
 }
 
